@@ -75,7 +75,7 @@ Beleza, quando adicionava a primeira compra ele também adicionava os mesmos dad
 
 Mas e na próxima compra?
 
-Bem, eu não havia pensado nisso.
+Quando adicionava nova compra para um produyo existente no estoque ele criava novo registro do produto. Mas não era isso que eu precisava. Eu precisava de cada vez que adicionasse um registro na compra, verificar o id do produto e caso já estivesse cadastrado, não criasse novo registro, mas somasse ao existente a quantidade do novo registro.
 
 As primeiras tentativas de fazer como fiz no Seller não funcionaram, pois quanto ia cadastrar o Seller/Venda já havia um registro em inventories, vindo da Compra. Mas como eu poderia cadastrar o primeiro registro de inventories quando fosse cadastrar comrpas, se inventories não tinha nenhum registro.
 
