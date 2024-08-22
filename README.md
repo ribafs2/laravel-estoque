@@ -53,3 +53,48 @@ Ver Estoques
 	
 Está funcionando redondinho.	
 
+
+## Como cheguei ao resultado atual?
+
+Inicialmente lembrei apenas de cadastrar inventories quando efetuava uma compra
+
+Apenas inclui no início
+
+use App\Models\Inventory;
+
+No store()
+
+Como o modelo que eu estava usando de controller vindo do gerador de CRUDs já fazia
+
+Buy::create($requestData);
+
+Apenas adicionei:
+Inventory::create($requestData);
+
+Beleza, quando adicionava a primeira compra ele também adicionava os mesmos dados no inventories.
+
+Mas e na próxima compra?
+
+Bem, eu não havia pensado nisso.
+
+As primeiras tentativas de fazer como fiz no Seller não funcionaram, pois quanto ia cadastrar o Seller/Venda já havia um registro em inventories, vindo da Compra. Mas como eu poderia cadastrar o primeiro registro de inventories quando fosse cadastrar comrpas, se inventories não tinha nenhum registro.
+
+Depois de várias tentativas e de consultar a documentação do Eloquent e do QueryBuilder acabei chegando a esta solução:
+
+- Primeiro, quando efetuar a compra, preciso usar o QueryBuilder paraa testar se inventories não tinha registro, caso não tivesse eu cadastrava o registro atual vindo do form create de Compras.
+
+Com inventories já tendo um registro eu consegui fazer parecido com o que fiz em Sales.
+Assim cheguei a esta solução.
+Deu um certo trabalho, mas isso é a falta de prática, pois realmente o Laravel facilita muito as coisas.
+As duas ferramentas que utilizei foram o Eloquent e o QueryBuilder.
+
+https://laravel.com/docs/11.x/eloquent
+https://laravel.com/docs/11.x/queries
+
+Depois de boa pesquisa e algumas experiências elaborei os tutoriais que usei aqui abaixo nos itens 3.2 e 3.3
+
+https://github.com/ribafs2/laravel-projetos
+
+https://github.com/ribafs2/laravel-projetos/blob/main/LaravelProjetos.pdf
+
+
